@@ -50,4 +50,34 @@ require("lazy").setup({
       },
     },
   },
+  require("lazy").setup({
+    spec = {
+      { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+      -- Language extras
+      { import = "lazyvim.plugins.extras.lang.python" },
+      { import = "lazyvim.plugins.extras.lang.go" },
+      { import = "lazyvim.plugins.extras.lang.dotnet" }, -- C#
+      { import = "lazyvim.plugins.extras.lang.clangd" }, -- C, C++
+      { import = "lazyvim.plugins.extras.lang.java" },
+      { import = "lazyvim.plugins.extras.lang.typescript" }, -- JS + TS
+      { import = "lazyvim.plugins.extras.lang.tailwind" },
+      { import = "lazyvim.plugins.extras.lang.json" },
+
+      { import = "plugins" },
+    },
+    defaults = { lazy = false, version = false },
+    checker = { enabled = true },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "gzip",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
+  }),
 })
