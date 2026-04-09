@@ -10,3 +10,4 @@ local opt = vim.opt
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.expandtab = true -- Tells Vim to insert spaces instead of a Tab character.
+vim.o.winblend = 0
