@@ -13,8 +13,6 @@ return {
         preset = "default",
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
-        -- Use "select_and_accept" so it picks the preselected item
-        ["<Space>"] = { "select_and_accept", "fallback" },
         -- Or use Enter if you prefer
         ["<CR>"] = { "accept", "fallback" },
       },
