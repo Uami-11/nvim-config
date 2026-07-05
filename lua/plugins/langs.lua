@@ -92,6 +92,8 @@ return {
         css = { "prettier" },
         sh = { "shfmt" },
         lua = { "stylua" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
       },
     },
   },
