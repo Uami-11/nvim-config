@@ -21,6 +21,8 @@ return {
         "gofumpt",
         "shfmt",
         "prettier",
+        -- LaTeX
+        "latexindent",
       },
     },
   },
@@ -94,6 +96,7 @@ return {
         lua = { "stylua" },
         json = { "prettier" },
         jsonc = { "prettier" },
+        tex = { "latexindent" },
       },
     },
   },
