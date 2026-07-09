@@ -23,6 +23,10 @@ return {
         "prettier",
         -- LaTeX
         "latexindent",
+        -- PostgreSQL
+        "pgformatter",
+        "postgres-language-server",
+        "sqlfluff",
       },
     },
   },
@@ -44,6 +48,8 @@ return {
         },
         -- Godot C# via GDScript LSP (connect to running Godot editor)
         gdscript = {},
+        -- PostgreSQL
+        postgres_lsp = {},
       },
     },
   },
@@ -73,6 +79,7 @@ return {
         "toml",
         "markdown",
         "markdown_inline",
+        "sql",
       },
     },
   },
