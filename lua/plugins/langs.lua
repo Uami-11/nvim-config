@@ -54,6 +54,22 @@ return {
     },
   },
 
+  -- nvim-lint: SQL linting via sqlfluff with PostgreSQL dialect
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      local sql_ft = { "sql", "mysql", "plsql" }
+      for _, ft in ipairs(sql_ft) do
+        opts.linters_by_ft[ft] = opts.linters_by_ft[ft] or {}
+        table.insert(opts.linters_by_ft[ft], "sqlfluff")
+      end
+      opts.linters = opts.linters or {}
+      opts.linters.sqlfluff = {
+        args = { "lint", "--format=json", "--dialect=postgres", "-" },
+      }
+    end,
+  },
+
   -- Treesitter: syntax highlighting for all languages
   {
     "nvim-treesitter/nvim-treesitter",
@@ -104,6 +120,14 @@ return {
         json = { "prettier" },
         jsonc = { "prettier" },
         tex = { "latexindent" },
+        sql = { "sqlfluff" },
+        mysql = { "sqlfluff" },
+        plsql = { "sqlfluff" },
+      },
+      formatters = {
+        sqlfluff = {
+          args = { "format", "--dialect=postgres", "-" },
+        },
       },
     },
   },
