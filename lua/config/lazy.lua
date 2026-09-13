@@ -30,6 +30,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.json" },
 
+    -- 2b. Debugging
+    { import = "lazyvim.plugins.extras.dap.core" },
+
     -- 3. Import your custom plugins from lua/plugins/
     { import = "plugins" },
   },
