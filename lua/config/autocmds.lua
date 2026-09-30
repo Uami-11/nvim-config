@@ -25,3 +25,32 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end
   end,
 })
+
+-- Strip the 'o' flag from 'formatoptions' so 'o'/'O' never continue comments.
+-- Needed per-buffer because many runtime ftplugins re-add it with
+-- `setlocal formatoptions+=croql` (sh, dosini, html, xml, typst, ...).
+local strip_comment_continue = vim.api.nvim_create_augroup("strip_comment_continue", { clear = true })
+
+local function remove_formatoptions_o()
+  vim.opt_local.formatoptions:remove("o")
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = strip_comment_continue,
+  callback = remove_formatoptions_o,
+})
+
+-- Guard against re-entrancy: mutating 'formatoptions' here re-fires OptionSet.
+local in_option_set = false
+vim.api.nvim_create_autocmd("OptionSet", {
+  group = strip_comment_continue,
+  pattern = "formatoptions",
+  callback = function()
+    if in_option_set then
+      return
+    end
+    in_option_set = true
+    vim.opt_local.formatoptions:remove("o")
+    in_option_set = false
+  end,
+})
