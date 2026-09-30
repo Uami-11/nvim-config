@@ -43,6 +43,7 @@ return {
             Lua = {
               workspace = { checkThirdParty = false },
               telemetry = { enabled = false },
+              completion = { callSnippet = "Disable" },
             },
           },
         },
