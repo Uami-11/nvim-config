@@ -9,6 +9,7 @@ return {
           cmd = { "gmlls" },
           filetypes = { "gml" },
           root_markers = { "*.yyp", ".git" },
+          init_options = { gmlSpec = vim.fn.expand("~/.config/gmlls/GmlSpec.xml") },
         },
         -- Configuration for Go
         gopls = {
