@@ -21,6 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.api.nvim_set_hl(0, "@lsp.type.number", { link = "@number" })
     vim.api.nvim_set_hl(0, "@lsp.type.operator", { link = "@operator" })
     vim.api.nvim_set_hl(0, "@lsp.type.variable", { link = "@variable" })
+    -- GML has no treesitter grammar, so the built-in gc/gcc comment operator
+    -- falls back to 'commentstring'. Without it, gc on .gml files is a no-op.
+    vim.bo.commentstring = "// %s"
   end,
 })
 
