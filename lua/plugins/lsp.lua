@@ -4,6 +4,12 @@ return {
     opts = {
       inlay_hints = { enabled = false }, -- Keeps those ghost hints away
       servers = {
+        -- GameMaker Language (GML)
+        gmlls = {
+          cmd = { "gmlls" },
+          filetypes = { "gml" },
+          root_markers = { "*.yyp", ".git" },
+        },
         -- Configuration for Go
         gopls = {
           settings = {

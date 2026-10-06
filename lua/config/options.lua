@@ -6,6 +6,9 @@
 --     vim.opt_local.softtabstop = 4
 --   end,
 -- })
+-- GameMaker Language
+vim.filetype.add({ extension = { gml = "gml" } })
+
 local opt = vim.opt
 opt.shiftwidth = 4
 opt.tabstop = 4
