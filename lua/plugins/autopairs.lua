@@ -6,3 +6,4 @@ return {
     enable_afterquote = true, -- Adds bracket pairs after quotes
   },
 }
+print("hi")

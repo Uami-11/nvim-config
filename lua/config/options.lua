@@ -48,6 +48,11 @@ vim.api.nvim_create_autocmd("FileType", {
             return p[name]
           end
         end
+      elseif cs:find("gamemaker", 1, true) then
+        local ok, gm = pcall(require, "gamemaker")
+        if ok and gm.palette and gm.palette[name] then
+          return gm.palette[name]
+        end
       end
       return fallback
     end
