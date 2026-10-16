@@ -26,6 +26,28 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
+-- Brighten the dim grey used by non-current line numbers and the snacks
+-- explorer/picker (path text, hidden & ignored entries). LineNrAbove/Below are
+-- set explicitly by tokyonight and do not inherit from LineNr. SnacksPickerTree
+-- brightens automatically because it links to LineNr.
+local function brighten_dim_highlights()
+  local fg = "#9aa5ce"
+  for _, group in ipairs({
+    "LineNr",
+    "LineNrAbove",
+    "LineNrBelow",
+    "SnacksPickerDir",
+    "SnacksPickerPathHidden",
+    "SnacksPickerPathIgnored",
+  }) do
+    vim.api.nvim_set_hl(0, group, { fg = fg })
+  end
+end
+
+-- Apply now (autocmds may load after the colorscheme) and on every change.
+brighten_dim_highlights()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = brighten_dim_highlights })
+
 -- Strip the 'o' flag from 'formatoptions' so 'o'/'O' never continue comments.
 -- Needed per-buffer because many runtime ftplugins re-add it with
 -- `setlocal formatoptions+=croql` (sh, dosini, html, xml, typst, ...).
