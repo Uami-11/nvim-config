@@ -1,18 +1,21 @@
 return {
   {
-    "catppuccin/nvim",
+    "folke/tokyonight.nvim",
+    lazy = true,
     opts = {
-      transparent_background = true,
-    },
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
     opts = {
-      transparent = true, -- Enable transparency
+      transparent_background = true,
       styles = {
         sidebars = "transparent",
         floats = "transparent",
