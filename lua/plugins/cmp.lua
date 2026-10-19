@@ -3,7 +3,10 @@ return {
     "saghen/blink.cmp",
     opts = {
       -- 1. Ensure the first item is automatically highlighted
+      -- but never insert it until explicitly accepted (auto_insert = false)
       completion = {
+        -- No inline preview of the selected item in the editor
+        ghost_text = { enabled = false },
         list = {
           selection = { preselect = true, auto_insert = true },
         },
