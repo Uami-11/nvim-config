@@ -60,6 +60,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Neovim stores all-caps globals in the shada file, which is used as a
+-- fallback to remember the last colorscheme. Keep the flag enabled.
+if not (vim.o.shada:match("^[^,]*") or ""):find("!", 1, true) then
+  vim.opt.shada = (vim.o.shada:gsub("^([^,]*)", "%1!"))
+end
+
 local opt = vim.opt
 opt.sidescrolloff = 0 -- Only scroll horizontally when the cursor actually leaves the window.
 opt.shiftwidth = 4
