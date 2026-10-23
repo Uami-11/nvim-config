@@ -2,7 +2,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = false }, -- Keeps those ghost hints away
+      -- Rust inlay hints (types, parameters, chaining), but keep the ghost
+      -- text out of the other filetypes.
+      inlay_hints = { enabled = true, exclude = { "go", "c", "cpp", "lua", "sh" } },
       servers = {
         -- GameMaker Language (GML)
         gmlls = {
