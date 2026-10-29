@@ -21,12 +21,6 @@ return {
             },
           },
         },
-        -- Keep your ccls config here as well if you use it
-        ccls = {
-          init_options = {
-            completion = { placeholder = false },
-          },
-        },
       },
     },
   },

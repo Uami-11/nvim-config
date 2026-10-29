@@ -1,6 +1,8 @@
 return {
 
-  -- Mason: auto-install all LSPs and tools
+  -- Mason: auto-install LSP servers and tools.
+  -- NOTE: LazyVim passes its computed server list to mason-lspconfig, but it
+  -- comes back empty in practice (verified), so servers must be listed here.
   {
     "mason-org/mason.nvim",
     opts = {
@@ -9,25 +11,16 @@ return {
         "pyright",
         "ruff",
         "gopls",
-        "omnisharp",
         "clangd",
-        "jdtls",
         "html-lsp",
         "css-lsp",
         "bash-language-server",
         "lua-language-server",
-        -- Formatters
-        "black",
-        "gofumpt",
-        "shfmt",
-        "prettier",
-        -- LaTeX
-        "latexindent",
-        -- PostgreSQL
-        "pgformatter",
         "postgres-language-server",
+        -- Formatters / linters
+        "prettier",
+        "latexindent",
         "sqlfluff",
-        -- GDScript
         "gdtoolkit",
       },
     },
@@ -49,7 +42,7 @@ return {
             },
           },
         },
-        -- Godot C# via GDScript LSP (connect to running Godot editor)
+        -- GDScript (connect to running Godot editor)
         gdscript = {},
         -- PostgreSQL
         postgres_lsp = {},
@@ -73,7 +66,9 @@ return {
     end,
   },
 
-  -- Treesitter: syntax highlighting for all languages
+  -- Treesitter: syntax highlighting for all languages.
+  -- Lists merge with LazyVim core + extras (opts_extend), so only list the
+  -- parsers that aren't covered elsewhere: css, GDScript and SQL.
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -82,41 +77,21 @@ return {
         disable = { "gdscript" },
       },
       ensure_installed = {
-        "python",
-        "go",
-        "c_sharp",
-        "c",
-        "cpp",
-        "java",
-        "javascript",
-        "tsx",
-        "html",
         "css",
-        "bash",
-        "lua",
         "gdscript",
-        "vim",
-        "vimdoc",
-        "json",
-        "yaml",
-        "toml",
-        "markdown",
-        "markdown_inline",
         "sql",
       },
     },
   },
-  -- conform.nvim: formatting (semicolon removal in Python is ruff/black)
+  -- conform.nvim: formatting (Python semicolon/import cleanup is ruff's job)
   {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
         python = { "ruff_format", "ruff_organize_imports" },
         go = { "gofumpt" },
-        cs = { "csharpier" },
         c = { "clang_format" },
         cpp = { "clang_format" },
-        java = { "google-java-format" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
