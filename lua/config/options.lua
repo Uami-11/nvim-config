@@ -66,6 +66,17 @@ if not (vim.o.shada:match("^[^,]*") or ""):find("!", 1, true) then
   vim.opt.shada = (vim.o.shada:gsub("^([^,]*)", "%1!"))
 end
 
+-- GDScript indentation
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gdscript",
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.autoindent = true
+  end,
+})
+
 local opt = vim.opt
 opt.sidescrolloff = 0 -- Only scroll horizontally when the cursor actually leaves the window.
 opt.shiftwidth = 4

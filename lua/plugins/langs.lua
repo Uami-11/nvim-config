@@ -27,6 +27,8 @@ return {
         "pgformatter",
         "postgres-language-server",
         "sqlfluff",
+        -- GDScript
+        "gdtoolkit",
       },
     },
   },
@@ -75,6 +77,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      indent = {
+        enable = true,
+        disable = { "gdscript" },
+      },
       ensure_installed = {
         "python",
         "go",
@@ -124,6 +130,7 @@ return {
         sql = { "sqlfluff" },
         mysql = { "sqlfluff" },
         plsql = { "sqlfluff" },
+        gdscript = { "gdformat" },
       },
       formatters = {
         sqlfluff = {
